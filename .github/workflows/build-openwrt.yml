@@ -60,11 +60,6 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-    - name: add 16M config
-      run: |
-           cd openwrt
-           wget -P ./target/linux/ramips/image https://github.com/Carrjiang/Actions-OpenWrt_PHICOMM_K2/raw/master/mt7620.mk -O mt7620.mk
-           wget -P ./target/linux/ramips/dts https://github.com/Carrjiang/Actions-OpenWrt_PHICOMM_K2/raw/master/mt7620a_phicomm_psg1218.dtsi -O mt7620a_phicomm_psg1218.dtsi
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
